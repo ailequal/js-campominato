@@ -1,10 +1,28 @@
-// bot generates 16 random numbers between 1 and 100
-var botNumbers = arrayGenerator(16, 1, 1000);
+// bot generates x random numbers between a and b
+var botNumbers = arrayGenerator(16, 1, 100);
 console.log(botNumbers);
 
 // how do i prevent the array to have cloned numbers??
 
-// ask user to insert for 84 times a number between 1 and 100
+// ask user to insert 84 times a number between 1 and 100
+var i = 0;
+var j = 0;
+var userNubers = [];
+var check = true;
+var message = "Game over";
+
+while (userNubers.length !== 84 && check == true) {
+  userNubers.push(parseInt(prompt('Insert a number, beware the mines!!')));
+  while (userNubers[j] !== botNumbers[i] && botNumbers[i] !== botNumbers[16]) {
+    i++;
+  }
+  if (userNubers[j] === botNumbers[i]) {
+    check = false;
+  } else {
+    i == 0;
+    j++;
+  }
+}
 
 // if number is on the bot list, game over
 
@@ -19,8 +37,9 @@ function getRndInteger(min, max) {
 
 // random array generator with selected amount of numbers between min and max
 function arrayGenerator(arrayLength, min, max) {
+  var i = 0;
   var arrayNumbers = [];
-  for (var i = 0; i < arrayLength; i++) {
+  for (i = 0; i < arrayLength; i++) {
     arrayNumbers.push(parseInt(getRndInteger(min, max)));
   }
   arrayNumbers.sort(function(a, b){return a-b});
