@@ -1,5 +1,5 @@
 // bot generates x random numbers between a and b
-var botNumbers = arrayGenerator(6, 1, 20);
+var botNumbers = arrayGenerator(16, 1, 100);
 var bridge = document.getElementById('bridge');
 for (var i = 0; i < botNumbers.length; i++) {
   bridge.innerHTML += '<li>' + botNumbers[i] + '</li>';
@@ -16,16 +16,16 @@ var score = 0;
 var check = true;
 var message = "You win";
 
-while (userNubers.length !== 14 && check === true) {
+while (userNubers.length !== 84 && check === true) {
   userNubers.push(parseInt(prompt('Insert a number, beware the mines!!')));
-  while ((userNubers[j] !== botNumbers[i]) && (botNumbers[i] !== botNumbers[5])) {
+  while ((userNubers[j] !== botNumbers[i]) && (botNumbers[i] !== botNumbers[15])) {
     i++;
   }
   if (userNubers[j] === botNumbers[i]) {
     check = false;
   } else {
     score++;
-    i == 0;
+    i = 0;
     j++;
   }
 }
