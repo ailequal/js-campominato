@@ -1,5 +1,9 @@
 // bot generates x random numbers between a and b
-var botNumbers = arrayGenerator(16, 1, 100);
+var botNumbers = arrayGenerator(6, 1, 20);
+var bridge = document.getElementById('bridge');
+for (var i = 0; i < botNumbers.length; i++) {
+  bridge.innerHTML += '<li>' + botNumbers[i] + '</li>';
+}
 console.log(botNumbers);
 
 // how do i prevent the array to have cloned numbers??
@@ -8,26 +12,32 @@ console.log(botNumbers);
 var i = 0;
 var j = 0;
 var userNubers = [];
+var score = 0;
 var check = true;
-var message = "Game over";
+var message = "You win";
 
-while (userNubers.length !== 84 && check == true) {
+while (userNubers.length !== 14 && check === true) {
   userNubers.push(parseInt(prompt('Insert a number, beware the mines!!')));
-  while (userNubers[j] !== botNumbers[i] && botNumbers[i] !== botNumbers[16]) {
+  while ((userNubers[j] !== botNumbers[i]) && (botNumbers[i] !== botNumbers[5])) {
     i++;
   }
   if (userNubers[j] === botNumbers[i]) {
     check = false;
   } else {
+    score++;
     i == 0;
     j++;
   }
 }
 
-// if number is on the bot list, game over
-
 // the program display the user score
-
+if (check) {
+  console.log(message);
+  console.log('Your personal score is ' + score);
+} else {
+  console.log(message = 'Game over');
+  console.log('Your personal score is ' + score);
+}
 
 // function
 // random number generator between min and max
