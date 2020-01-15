@@ -1,10 +1,13 @@
 // var
+var i = 0;
 var level = '';
 var minNumber = 1;
 var maxNumber = 100;
-var attempt = 84;
+var attempt = 5;
 var arrayBomb = [];
 var numberBomb = 0;
+var arrayUser = [];
+var numberUser = 0;
 
 // ask for which level to play
 // level 0 > 1 to 100 with 84 times
@@ -28,7 +31,7 @@ console.log('maxNumber set to', maxNumber);
 console.log('attempt set to', attempt);
 
 // generate 16 random numbers from minNumber to maxNumber, all different, and store them in an array
-for (var i = 0; arrayBomb.length < 16; i++) {
+for (i = 0; arrayBomb.length < 16; i++) {
   numberBomb = getRandomNumber(minNumber, maxNumber);
   if (arrayScan(arrayBomb, numberBomb) === false) {
     arrayBomb.push(numberBomb);
@@ -37,7 +40,20 @@ for (var i = 0; arrayBomb.length < 16; i++) {
 arrayBomb.sort(function(a, b){return a-b});
 console.log(arrayBomb);
 
-// ask user 84 times to insert a number between 1 and 100
+// ask user n attempt times to insert a number between minNumber and maxNumber
+i = 0;
+while (i < attempt && arrayScan(arrayBomb, numberUser) === false) {
+
+  do {
+    numberUser = parseInt(prompt('Insert a number between ' + minNumber + ' and ' + maxNumber));
+  } while (isBetween(minNumber, maxNumber, numberUser) === false && arrayScan(arrayUser, numberUser === true));
+
+  arrayUser.push(numberUser);
+
+  // only between min and max is fine without repetition
+  i++;
+}
+console.log(arrayUser);
 
 // if number is on the main list, gave over
 
@@ -68,4 +84,16 @@ function arrayScan(array, item) {
     i++;
   }
   return check;
+}
+
+// scan if a var int is between two selected values, both included
+function isBetween(min, max, item) {
+  var check = false;
+  if (item >= min && item <= max) {
+    check = true;
+    return check;
+  } else {
+    // use default value
+    return check;
+  }
 }
