@@ -28,13 +28,13 @@ console.log('maxNumber set to', maxNumber);
 console.log('attempt set to', attempt);
 
 // generate 16 random numbers from minNumber to maxNumber, all different, and store them in an array
-for (var i = 0; i < 16; i++) {
+for (var i = 0; arrayBomb.length < 16; i++) {
   numberBomb = getRandomNumber(minNumber, maxNumber);
-  arrayBomb.push(numberBomb);
-  if (true) {
-    // check that the array has only different numbers
+  if (arrayScan(arrayBomb, numberBomb) === false) {
+    arrayBomb.push(numberBomb);
   }
 }
+arrayBomb.sort(function(a, b){return a-b});
 console.log(arrayBomb);
 
 // ask user 84 times to insert a number between 1 and 100
