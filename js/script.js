@@ -8,6 +8,7 @@ var arrayBomb = [];
 var numberBomb = 0;
 var arrayUser = [];
 var numberUser = 0;
+var score = 0;
 
 // ask for which level to play
 // level 0 > 1 to 100 with 84 times
@@ -40,20 +41,25 @@ for (i = 0; arrayBomb.length < 16; i++) {
 arrayBomb.sort(function(a, b){return a-b});
 console.log(arrayBomb);
 
-// ask user n attempt times to insert a number between minNumber and maxNumber
+// ask user n attempt times to insert a number between  and maxNumber
 i = 0;
 while (i < attempt && arrayScan(arrayBomb, numberUser) === false) {
 
+  // ask numberUser and push it inside arrayUser
+  // check isBetween minNumber and maxNumber and that isn't inside arrayUser
   do {
     numberUser = parseInt(prompt('Insert a number between ' + minNumber + ' and ' + maxNumber));
-  } while (isBetween(minNumber, maxNumber, numberUser) === false && arrayScan(arrayUser, numberUser === true));
+  } while (isBetween(minNumber, maxNumber, numberUser) === false || arrayScan(arrayUser, numberUser));
 
-  arrayUser.push(numberUser);
-
-  // only between min and max is fine without repetition
+  // only push inside the array if is not a numberBomb
+  if (arrayScan(arrayBomb, numberUser) === false) {
+    arrayUser.push(numberUser);
+    score++;
+  }
   i++;
 }
 console.log(arrayUser);
+console.log(score);
 
 // if number is on the main list, gave over
 
