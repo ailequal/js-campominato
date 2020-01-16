@@ -38,7 +38,15 @@ console.log('maxNumber set to', maxNumber);
 console.log('attempt set to', attempt);
 
 // generate 16 random numbers from minNumber to maxNumber, all different, and store them in an array
-for (i = 0; arrayBomb.length < 16; i++) {
+// for version
+// for (i = 0; arrayBomb.length < 16; i++) {
+//   numberBomb = getRandomNumber(minNumber, maxNumber);
+//   if (arrayScan(arrayBomb, numberBomb) === false) {
+//     arrayBomb.push(numberBomb);
+//   }
+// }
+// while version
+while (arrayBomb.length < 16) {
   numberBomb = getRandomNumber(minNumber, maxNumber);
   if (arrayScan(arrayBomb, numberBomb) === false) {
     arrayBomb.push(numberBomb);
@@ -85,9 +93,6 @@ function arrayScan(array, item) {
   while (i < array.length && check === false) {
     if (array[i] === item) {
       check = true;
-      return check;
-    } else {
-      check = false;
     }
     i++;
   }
